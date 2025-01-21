@@ -5,7 +5,7 @@ complete = False
 i = 0
 
 while complete != True:
-    guessingU = input("Type one character or type Exit to quit ")
+    guessingU = input("Type one character ")
     guessing = guessingU.lower()
     if guessing == word[i] :
         guess.append(guessing)
@@ -14,9 +14,5 @@ while complete != True:
         if len(guess) == len(word):
             print("Completed")
             break
-    elif guessing == 'Exit' :
-        print("Quiting...")
-        break
     else :
         print("Wrong. Guess another character")
-    
