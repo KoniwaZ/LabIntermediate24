@@ -22,7 +22,7 @@ while chance > 0:
             for i in range(len(word)):
                 if word[i] == guessing:  
                     guess[i] = guessing
-                    print("You right! Continue guessing")
+                    print("You right!")
 
             chance -= 1
             
