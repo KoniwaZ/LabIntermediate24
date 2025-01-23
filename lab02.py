@@ -7,6 +7,7 @@ for char in guess:
 print()
 
 while chance > 0:
+    print("Chance left:", chance)
     guessing = input("Type one character: ").lower()
     
     if guessing in word:
