@@ -19,12 +19,11 @@ while chance > 0:
             guessed.append(guessing)
         
         if guessing in word:
+            chance -= 1
             for i in range(len(word)):
                 if word[i] == guessing:  
                     guess[i] = guessing
                     print("You right!")
-
-            chance -= 1
             
             if "_" not in guess:
                 print("Completed! The word is :", word)
