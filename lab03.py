@@ -2,7 +2,7 @@ def main(word):
     word = word
     guess = ["_"] * len(word)
     guessed = []
-    chance = 6
+    chance = len(word) + 2
     while chance > 0:
         for char in guess:
             print(char, end=" ")
@@ -22,7 +22,8 @@ def main(word):
                 for i in range(len(word)):
                     if word[i] == guessing:  
                         guess[i] = guessing
-                        print(f"Congrats, {guessing} is in the secret word!")
+                
+                print(f"Congrats, {guessing} is in the secret word!")
                 
                 if "_" not in guess:
                     print("Completed! The secret word is :", word)
