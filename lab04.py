@@ -1,13 +1,14 @@
 import random
 
 def main():
-    global guess, guessed, score, word, words  
+    global guess, guessed, score, word, words
 
     words = ["prasmul", "qwert", "parkir"]
     score = 0
 
     while words:  # Keep playing until all words are guessed
         word = random.choice(words).lower()
+        chance = len(word)+2
         guess = ["_"] * len(word)
         guessed = []
 
@@ -31,6 +32,7 @@ def main():
             score += 1
 
         def check_answer(guessing):
+            nonlocal chance
             #Check if the guessed letter is correct
             if not check_word(guessing):
                 return  #wrong asw
@@ -46,24 +48,33 @@ def main():
                     words.remove(word)
                     return True
             else:
-                print("Wrong guess.")
+                chance -= 1
+                print(f"Wrong guess. You have life {chance} left.")
 
             return False
 
         # Word guessing loop
-        while "_" in guess:
+        while "_" in guess and chance>0:
             for char in guess:
                 print(char, end=" ")
             print()
-            guessing = input("Type one character (or 'quit' to exit): ").lower()
+            print(f"You have {chance} chances left. Your current score is: {score}")
+            while True:
+                guessing = input("Type one character (or 'quit' to exit): ").lower()
+                if guessing == "quit":
+                    print(f"You quit the game. Final Score: {score}")
+                    return  
+                if guessing.isalpha() and len(guessing) == 1:
+                    break
+                print("Invalid input! Please enter a single letter.")
 
-            if guessing == "quit":  # Exit if user types 'quit'
-                print(f"You quit the game. Final Score: {score}")
-                return
+            print(f"You have {chance} chances left. Your current score is: {score}")
 
             if check_answer(guessing):  
                 break
-
+            
+        if chance == 0:
+            print(f"You ran out of chances! The word was: {word}")
     # End of game
     print(f"Game over! You guessed all words. Final Score: {score}")
 
