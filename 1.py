@@ -1,6 +1,6 @@
 data = {
     "Dr. A": {("Matematika", "Ganjil"), ("Fisika", "Genap")},
-    "Dr. B": {("Kimia", "Ganjil")},
+    "Dr.    B": {("Kimia", "Ganjil")},
 }
 
 
